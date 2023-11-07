@@ -1,0 +1,120 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+generator json {
+  provider = "prisma-json-types-generator"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  emailAddress String   @unique
+  firstName    String?
+  lastName     String?
+  role         UserRole @default(Customer)
+  avatarUrl    String?  @db.VarChar(255)
+  phoneNumber  String?  @db.VarChar(255)
+
+  posts    Post[]
+  comments Comment[]
+}
+
+enum UserRole {
+  Owner
+  Employee
+  Customer
+}
+
+model Media {
+  id Int @id @default(autoincrement())
+
+  url String @unique @db.VarChar(255)
+  alt String @db.VarChar(255)
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model Form {
+  id     Int @id @default(autoincrement())
+  siteId Int
+
+  name   String @db.VarChar(255)
+  /// [PostField]
+  fields Json[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model Post {
+  id       Int    @id @default(autoincrement())
+  siteId   Int
+  authorId String
+
+  status        PostStatus @default(Idea)
+  title         String     @db.VarChar(255)
+  slug          String     @db.VarChar(255)
+  excerpt       String?
+  content       String?
+  notes         String?
+  allowcomments Boolean    @default(true)
+
+  publishAt DateTime  @default(now())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  author     User       @relation(fields: [authorId], references: [id])
+  categories Category[]
+  comments   Comment[]
+}
+
+enum PostStatus {
+  Idea
+  InProgress
+  Finished
+}
+
+model Category {
+  id Int @id @default(autoincrement())
+
+  name        String  @db.VarChar(255)
+  slug        String  @db.VarChar(255)
+  description String?
+
+  posts Post[]
+}
+
+model Comment {
+  id       Int    @id @default(autoincrement())
+  userId   String
+  postId   Int
+  parentId Int?
+
+  content String
+  status  CommentStatus @default(PendingReview)
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  user    User      @relation(fields: [userId], references: [id])
+  post    Post      @relation(fields: [postId], references: [id])
+  replies Comment[] @relation("Replies")
+  parent  Comment?  @relation("Replies", fields: [parentId], references: [id])
+}
+
+enum CommentStatus {
+  PendingReview
+  Visible
+  Blocked
+}
