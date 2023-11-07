@@ -12,67 +12,66 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Account {
+  id Int @id @default(autoincrement())
+
+  name String @db.VarChar(255)
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  users      User[]
+  posts      Post[]
+  categories Category[]
+  comments   Comment[]
+}
+
 model User {
-  id           String   @id @default(cuid())
+  id        String @id @default(cuid())
+  accountId Int
+
   emailAddress String   @unique
   firstName    String?
   lastName     String?
-  role         UserRole @default(Customer)
+  role         UserRole @default(Guest)
   avatarUrl    String?  @db.VarChar(255)
   phoneNumber  String?  @db.VarChar(255)
 
-  posts    Post[]
-  comments Comment[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  account Account @relation(fields: [accountId], references: [id])
+  posts   Post[]
 }
 
 enum UserRole {
-  Owner
-  Employee
-  Customer
-}
-
-model Media {
-  id Int @id @default(autoincrement())
-
-  url String @unique @db.VarChar(255)
-  alt String @db.VarChar(255)
-
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime?
-}
-
-model Form {
-  id     Int @id @default(autoincrement())
-  siteId Int
-
-  name   String @db.VarChar(255)
-  /// [PostField]
-  fields Json[]
-
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime?
+  Admin
+  Editor
+  Guest
 }
 
 model Post {
-  id       Int    @id @default(autoincrement())
-  siteId   Int
-  authorId String
+  id        Int    @id @default(autoincrement())
+  accountId Int
+  authorId  String
 
   status        PostStatus @default(Idea)
   title         String     @db.VarChar(255)
   slug          String     @db.VarChar(255)
   excerpt       String?
   content       String?
+  /// [PostMeta]
+  meta          Json[]
   notes         String?
   allowcomments Boolean    @default(true)
 
-  publishAt DateTime  @default(now())
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
 
+  account    Account    @relation(fields: [accountId], references: [id])
   author     User       @relation(fields: [authorId], references: [id])
   categories Category[]
   comments   Comment[]
@@ -82,23 +81,26 @@ enum PostStatus {
   Idea
   InProgress
   Finished
+  Published
 }
 
 model Category {
-  id Int @id @default(autoincrement())
+  id        Int @id @default(autoincrement())
+  accountId Int
 
   name        String  @db.VarChar(255)
   slug        String  @db.VarChar(255)
   description String?
 
-  posts Post[]
+  account Account @relation(fields: [accountId], references: [id])
+  posts   Post[]
 }
 
 model Comment {
-  id       Int    @id @default(autoincrement())
-  userId   String
-  postId   Int
-  parentId Int?
+  id        Int  @id @default(autoincrement())
+  accountId Int
+  postId    Int
+  parentId  Int?
 
   content String
   status  CommentStatus @default(PendingReview)
@@ -107,7 +109,7 @@ model Comment {
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
 
-  user    User      @relation(fields: [userId], references: [id])
+  account Account   @relation(fields: [accountId], references: [id])
   post    Post      @relation(fields: [postId], references: [id])
   replies Comment[] @relation("Replies")
   parent  Comment?  @relation("Replies", fields: [parentId], references: [id])

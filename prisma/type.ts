@@ -1,21 +1,21 @@
 import { Post } from "@prisma/client";
 
 /**
- * Page
+ * JSON Types
  */
-export interface IPostField {
-  title: string;
-  description?: string;
+export interface IPostMeta {
+  type: "title" | "description";
+  content: string;
 }
 
-export interface IPageSection {
-  order: number;
-  variation: number;
-  content: any;
+declare global {
+  namespace PrismaJson {
+    type PostMeta = IPostMeta;
+  }
 }
 
 /**
- * Post
+ * New Types
  */
 export type NewPost = Omit<
   Post,
@@ -24,15 +24,8 @@ export type NewPost = Omit<
   | "status"
   | "content"
   | "excerpt"
-  | "publishAt"
   | "createdAt"
   | "updatedAt"
   | "deletedAt"
   | "allowcomments"
 >;
-
-declare global {
-  namespace PrismaJson {
-    type PostField = IPostField;
-  }
-}

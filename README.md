@@ -59,8 +59,6 @@ NOTE: studio command has been added to packages.json scripts
 
 ## Architecture
 
-## VS Code
-
 ## Notes
 
 - Changed default port from 3000 to 8000 to avoid conflicts with existing projects.

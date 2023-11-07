@@ -1,18 +1,24 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, UserRole } from "@prisma/client";
 import Categories from "./seeds/categories";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  await prisma.user.create({
+  const account = await prisma.account.create({
     data: {
-      emailAddress: "john@acmeblog.com",
-      firstName: "John",
-      lastName: "Doe",
+      name: "Acme Blog",
+      users: {
+        create: {
+          emailAddress: "john@acmeblog.com",
+          firstName: "John",
+          lastName: "Doe",
+          role: UserRole.Admin,
+        },
+      },
     },
   });
 
-  await Categories();
+  await Categories(account);
 }
 
 main()
