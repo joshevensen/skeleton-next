@@ -8,6 +8,7 @@ export enum InputType {
   Multiline = "multiline",
   Select = "select",
   Checkbox = "checkbox",
+  Switch = "switch",
   Number = "number",
   Email = "email",
   Phone = "phone",
