@@ -12,6 +12,7 @@ export enum ButtonTypeEnum {
 export enum ButtonColorEnum {
   Primary = 1,
   Secondary,
+  Light,
 }
 
 export enum ButtonSizeEnum {
@@ -100,6 +101,24 @@ const LibButton: React.FC<props> = ({
       color: "text-secondary",
       hover: "hover:bg-secondary-dark",
       disabled: "disabled:text-secondary-light",
+    };
+  }
+
+  if (color === ButtonColorEnum.Light) {
+    border = {
+      color: "border-text-text-light",
+      hover: "hover:border-text",
+      disabled: "disabled:border-text-text-muted",
+    };
+    background = {
+      color: "bg-text-text-light",
+      hover: "hover:bg-text",
+      disabled: "disabled:bg-text-text-muted",
+    };
+    text = {
+      color: "text-text-light",
+      hover: "hover:text-text",
+      disabled: "disabled:text-text-muted",
     };
   }
 

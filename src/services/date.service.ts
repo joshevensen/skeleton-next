@@ -1,4 +1,4 @@
-function formatDate(timestamp: Date, includeYear = false) {
+function formatDate(timestamp: Date, includeYear = true) {
   return new Date(timestamp).toLocaleDateString("en-US", {
     month: "numeric",
     day: "numeric",

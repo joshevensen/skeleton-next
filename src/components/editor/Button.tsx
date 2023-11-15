@@ -1,7 +1,7 @@
-import LibIcon, { IconNameEnum, IconSizeEnum } from "../library/Icon";
+import EditorIcon, { EditorIconsEnum } from "./Icon";
 
 type props = {
-  iconName: IconNameEnum;
+  iconName: EditorIconsEnum;
   onClick: () => void;
   isDisabled?: boolean;
   isActive?: boolean;
@@ -26,7 +26,7 @@ const EditorButton: React.FC<props> = ({
           : `${defaultClasses} hover:bg-secondary hover:text-white`
       }
     >
-      <LibIcon name={iconName} size={IconSizeEnum.Small} />
+      <EditorIcon name={iconName} />
     </button>
   );
 };

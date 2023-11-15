@@ -34,11 +34,13 @@ const LibTabs: React.FC<props> = ({ tabs }) => {
               key={tab.id}
               className={classes}
               onClick={changeTab.bind("tab", tab)}
+              type="button"
             >
               {tab.label}
             </button>
           );
         })}
+
         <div className="hidden grow border-b-2 border-border"></div>
       </div>
 

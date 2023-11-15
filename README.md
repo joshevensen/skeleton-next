@@ -1,6 +1,10 @@
-# Next Skeleton
+# SaaS Skeleton
 
 This is a [Next.js](https://nextjs.org/) skeleton bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+The goal of this project is to accelerate new project development by having an existing code base that has all low-level functionality already built.
+
+This will be a living project and be updated as new ideas and improvements are discovered.
 
 ## Getting Started
 
@@ -19,17 +23,17 @@ Update tailwind.config.ts with the project color scheme.
 
 ## Packages Used
 
-- Next.js
-- Typescript
-- Tailwind CSS w/ plugins
-- Clerk
-- Prisma
-- Axios
-- React Icons
-- React Hook Form
-- Redux
-- TipTap
-- Postmark
+- [Next.js]()
+- [Typescript]()
+- [Tailwind CSS]()
+- [Clerk]()
+- [Prisma]()
+- [Axios]()
+- [React Icons]()
+- [React Hook Form]()
+- [Redux]()
+- [TipTap]()
+- [Postmark]()
 
 ## Prisma
 
@@ -48,6 +52,10 @@ npx primsa db push
 ```
 
 ```bash
+npx primsa seed
+```
+
+```bash
 npx primsa generate
 ```
 
@@ -55,9 +63,35 @@ npx primsa generate
 npx primsa studio
 ```
 
-NOTE: studio command has been added to packages.json scripts
+**NOTE**: studio command has been added to packages.json scripts
 
 ## Architecture
+
+### Components
+
+#### - Editor
+
+A WYSIWYG Editor built on TipTap and ready to use in any React app.
+
+#### - Layout
+
+These components are used in the shell layout of the whole app
+
+#### - Library
+
+These are the building block components used throughout the app
+
+### Enums
+
+Enums are created in the `enums` directory and should be registered in the `index.ts` file so that they can be used from a single enums variable.
+
+### Features
+
+This is for app features
+
+### Services
+
+The various services that can be used throughout the app and don't warrant a custom hook. Typically these will integrate with external services or formatting coding.
 
 ## Notes
 
