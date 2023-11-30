@@ -9,7 +9,7 @@ const LayoutHeader: React.FC = () => {
 
   return (
     <header
-      className={`py-4 ${horizontalPadding} bg-white border-b border-border`}
+      className={`py-2 ${horizontalPadding} bg-white border-b border-border`}
     >
       <div className={`${maxWidth} mx-auto flex justify-between items-center`}>
         <LayoutLogo />

@@ -57,7 +57,7 @@ model Post {
   accountId Int
   authorId  String
 
-  status        PostStatus @default(Idea)
+  status        PostStatus @default(Ideas)
   title         String     @db.VarChar(255)
   slug          String     @db.VarChar(255)
   excerpt       String?
@@ -78,9 +78,9 @@ model Post {
 }
 
 enum PostStatus {
-  Idea
-  InProgress
-  Finished
+  Ideas
+  Writing
+  Future
   Published
 }
 

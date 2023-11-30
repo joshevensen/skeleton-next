@@ -13,6 +13,36 @@ npm install
 cp .env.example .env
 ```
 
+### Required Packages
+
+```bash
+npm install prisma @prisma/client prisma-json-types-generator axios react-hook-form react-icons swr
+```
+
+```bash
+npm install -D @tailwindcss/forms @tailwindcss/typography ts-node
+```
+
+### Optional Packages
+
+```bash
+npm install @tiptap/starter-kit @tiptap/react @tiptap/pm @tiptap/extension-focus @tiptap/extension-link @tiptap/extension-placeholder @tiptap/extension-text-align @tiptap/extension-typography @tiptap/extension-underline
+```
+
+```bash
+npm install react-redux @redux/toolkit
+```
+
+```bash
+npm install @clerk/nextjs
+```
+
+```bash
+npm install postmark
+```
+
+### Run App
+
 ```bash
 npm run dev
 ```
@@ -40,27 +70,27 @@ Update tailwind.config.ts with the project color scheme.
 Update `DATABASE_URL` in `.env` file
 
 ```bash
-npx primsa init
+npx prisma init
 ```
 
 ```bash
-npx primsa db pull
+npx prisma db pull
 ```
 
 ```bash
-npx primsa db push
+npx prisma db push
 ```
 
 ```bash
-npx primsa seed
+npx prisma seed
 ```
 
 ```bash
-npx primsa generate
+npx prisma generate
 ```
 
 ```bash
-npx primsa studio
+npx prisma studio
 ```
 
 **NOTE**: studio command has been added to packages.json scripts

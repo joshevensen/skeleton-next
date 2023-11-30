@@ -2,7 +2,7 @@ import { Account, PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export default async function Categories(account: Account) {
+export default async function categories(account: Account) {
   // Food
   await prisma.category.create({
     data: {

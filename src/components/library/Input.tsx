@@ -170,7 +170,7 @@ const LibInput: React.FC<props> = ({
 
   return (
     <div className={fieldClasses}>
-      <label className="block mb-1" htmlFor={name}>
+      <label className="block text-sm sm:text-base md:mb-1" htmlFor={name}>
         {label}
       </label>
 

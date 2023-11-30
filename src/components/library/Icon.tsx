@@ -1,6 +1,8 @@
 import {
+  BiChevronDown,
   BiChevronLeft,
   BiChevronRight,
+  BiChevronUp,
   BiDownArrowAlt,
   BiEditAlt,
   BiHome,
@@ -25,8 +27,10 @@ import {
 export enum IconNameEnum {
   Add,
   Close,
+  Collapse,
   Down,
   Edit,
+  Expand,
   Home,
   Left,
   Logout,
@@ -78,10 +82,14 @@ const LibIcon: React.FC<props> = ({
       return <BiPlus className={classes} />;
     case IconNameEnum.Close:
       return <BiX className={classes} />;
+    case IconNameEnum.Collapse:
+      return <BiChevronUp className={classes} />;
     case IconNameEnum.Down:
       return <BiDownArrowAlt className={classes} />;
     case IconNameEnum.Edit:
       return <BiEditAlt className={classes} />;
+    case IconNameEnum.Expand:
+      return <BiChevronDown className={classes} />;
     case IconNameEnum.Left:
       return <BiLeftArrowAlt className={classes} />;
     case IconNameEnum.Home:

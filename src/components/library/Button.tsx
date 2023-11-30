@@ -30,13 +30,14 @@ type props = {
 
   children?: ReactNode;
   iconName?: IconNameEnum;
-  iconSize?: IconSizeEnum;
 
   isSubmit?: boolean;
   href?: string;
-  isExternalLink?: boolean;
-  isDisabled?: boolean;
   title?: string;
+  isFullWidth?: boolean;
+  isExternalLink?: boolean;
+  isLoading?: boolean;
+  isDisabled?: boolean;
 };
 
 const LibButton: React.FC<props> = ({
@@ -48,13 +49,14 @@ const LibButton: React.FC<props> = ({
   size = ButtonSizeEnum.Medium,
 
   iconName,
-  iconSize,
 
   isSubmit = false,
   href,
+  title,
+  isFullWidth = false,
   isExternalLink = false,
   isDisabled = false,
-  title,
+  isLoading = false,
 }) => {
   const router = useRouter();
 
@@ -70,95 +72,156 @@ const LibButton: React.FC<props> = ({
     }
   }
 
-  let border = {
-    color: "border-primary",
-    hover: "hover:border-primary-dark",
-    disabled: "disabled:border-primary-light",
-  };
-  let background = {
-    color: "bg-primary",
-    hover: "hover:bg-primary-dark",
-    disabled: "disabled:bg-primary-light",
-  };
-  let text = {
-    color: "text-primary",
-    hover: "hover:text-primary-dark",
-    disabled: "disabled:text-primary-light",
-  };
+  /**
+   * Common Variables
+   */
+  const loadingContent = "...";
 
-  if (color === ButtonColorEnum.Secondary) {
-    border = {
-      color: "border-secondary",
-      hover: "hover:border-secondary-dark",
-      disabled: "disabled:border-secondary-light",
-    };
-    background = {
-      color: "bg-secondary",
-      hover: "hover:bg-secondary-dark",
-      disabled: "disabled:bg-secondary-light",
-    };
-    text = {
-      color: "text-secondary",
-      hover: "hover:bg-secondary-dark",
-      disabled: "disabled:text-secondary-light",
-    };
+  let sizeClasses = "py-1 px-4";
+  if (size === ButtonSizeEnum.Small) sizeClasses = "py-1 px-2 text-sm";
+  if (size === ButtonSizeEnum.Large) sizeClasses = "py-2 px-6 text-2xl";
+
+  const widthClass = isFullWidth ? "w-full" : "";
+  const borderClass = "border-2 rounded";
+  const textClasses = "font-medium uppercase tracking-wide";
+  let commonClasses = `flex justify-center items-center ${widthClass} ${borderClass} ${textClasses} disabled:cursor-not-allowed`;
+
+  switch (type) {
+    /**
+     * Icon Button
+     */
+    case ButtonTypeEnum.Icon:
+      if (iconName) {
+        let iconClasses = "bg-transparent border-transparent";
+
+        switch (color) {
+          case ButtonColorEnum.Light:
+            iconClasses +=
+              " text-light hover:text-light-hover disabled:text-light-disabled";
+            break;
+          case ButtonColorEnum.Secondary:
+            iconClasses +=
+              " text-secondary hover:text-secondary-hover disabled:text-secondary-disabled";
+            break;
+          default:
+            iconClasses +=
+              " text-primary hover:text-primary-hover disabled:text-primary-disabled";
+        }
+
+        let iconSize = IconSizeEnum.Medium;
+        if (size === ButtonSizeEnum.Small) iconSize = IconSizeEnum.Small;
+        if (size === ButtonSizeEnum.Large) iconSize = IconSizeEnum.Large;
+
+        return (
+          <button
+            className={`${commonClasses} p-0 ${iconClasses}`}
+            type={isSubmit ? "submit" : "button"}
+            onClick={clickButton}
+            disabled={isDisabled}
+            title={title}
+          >
+            {isLoading && loadingContent}
+            {!isLoading && <LibIcon name={iconName} size={iconSize} />}
+          </button>
+        );
+      }
+    /**
+     * Text Button
+     */
+    case ButtonTypeEnum.Text:
+      let textClasses = "bg-transparent border-transparent";
+
+      switch (color) {
+        case ButtonColorEnum.Light:
+          textClasses +=
+            " text-light hover:text-light-hover disabled:text-light-disabled";
+          break;
+        case ButtonColorEnum.Secondary:
+          textClasses +=
+            " text-secondary hover:text-secondary-hover disabled:text-secondary-disabled";
+          break;
+        default:
+          textClasses +=
+            " text-primary hover:text-primary-hover disabled:text-primary-disabled";
+      }
+
+      return (
+        <button
+          className={`${commonClasses} ${sizeClasses} ${textClasses}`}
+          type={isSubmit ? "submit" : "button"}
+          onClick={clickButton}
+          disabled={isDisabled}
+          title={title}
+        >
+          {isLoading && loadingContent}
+          {!isLoading && children}
+        </button>
+      );
+    /**
+     * Outline Button
+     */
+    case ButtonTypeEnum.Outline:
+      let outlineClasses = "bg-transparent disabled:bg-transparent";
+
+      switch (color) {
+        case ButtonColorEnum.Light:
+          outlineClasses +=
+            " border-light text-light hover:bg-light hover:text-white disabled:border-light-disabled disabled:text-light-disabled";
+          break;
+        case ButtonColorEnum.Secondary:
+          outlineClasses +=
+            " border-secondary text-secondary hover:bg-secondary hover:text-white disabled:border-secondary-disabled disabled:text-secondary-disabled";
+          break;
+        default:
+          outlineClasses +=
+            " border-primary text-primary hover:bg-primary hover:text-white disabled:border-primary-disabled disabled:text-primary-disabled";
+      }
+
+      return (
+        <button
+          className={`${commonClasses} ${sizeClasses} ${outlineClasses}`}
+          type={isSubmit ? "submit" : "button"}
+          onClick={clickButton}
+          disabled={isDisabled}
+          title={title}
+        >
+          {isLoading && loadingContent}
+          {!isLoading && children}
+        </button>
+      );
+    /**
+     * Solid Button
+     */
+    default:
+      let solidClasses = "text-white";
+
+      switch (color) {
+        case ButtonColorEnum.Light:
+          solidClasses +=
+            " bg-light border-light hover:border-light-hover hover:bg-light-hover disabled:border-light-disabled disabled:bg-light-disabled";
+          break;
+        case ButtonColorEnum.Secondary:
+          solidClasses +=
+            " bg-secondary border-secondary hover:border-secondary-hover hover:bg-secondary-hover disabled:border-secondary-disabled disabled:bg-secondary-disabled";
+          break;
+        default:
+          solidClasses +=
+            " bg-primary border-primary hover:border-primary-hover hover:bg-primary-hover disabled:border-primary-disabled disabled:bg-primary-disabled";
+      }
+
+      return (
+        <button
+          className={`${commonClasses} ${sizeClasses} ${solidClasses}`}
+          type={isSubmit ? "submit" : "button"}
+          onClick={clickButton}
+          disabled={isDisabled}
+          title={title}
+        >
+          {isLoading && loadingContent}
+          {!isLoading && children}
+        </button>
+      );
   }
-
-  if (color === ButtonColorEnum.Light) {
-    border = {
-      color: "border-text-text-light",
-      hover: "hover:border-text",
-      disabled: "disabled:border-text-text-muted",
-    };
-    background = {
-      color: "bg-text-text-light",
-      hover: "hover:bg-text",
-      disabled: "disabled:bg-text-text-muted",
-    };
-    text = {
-      color: "text-text-light",
-      hover: "hover:text-text",
-      disabled: "disabled:text-text-muted",
-    };
-  }
-
-  let classes = `flex items-center border-2 ${border.color} ${border.hover} ${border.disabled} font-medium uppercase tracking-wide disabled:cursor-not-allowed`;
-
-  if (type === ButtonTypeEnum.Icon) {
-    classes += ` bg-transparent border-none ${text.color} ${text.hover} ${text.disabled}`;
-  } else if (type === ButtonTypeEnum.Outline) {
-    classes += ` bg-transparent ${background.hover} ${text.color} hover:text-white ${text.disabled}`;
-  } else {
-    classes += ` ${background.color} ${background.hover} ${background.disabled} text-white`;
-  }
-
-  if (type === ButtonTypeEnum.Icon) {
-    classes += ` p-0`;
-  } else if (size === ButtonSizeEnum.Small) {
-    classes += " py-1 px-4 text-sm";
-  } else if (size === ButtonSizeEnum.Large) {
-    classes += " py-2 px-6 text-2xl";
-  } else {
-    classes += " py-1 px-4";
-  }
-
-  let content = children;
-
-  if (type === ButtonTypeEnum.Icon && iconName) {
-    content = <LibIcon name={iconName} size={iconSize} />;
-  }
-
-  return (
-    <button
-      className={classes}
-      type={isSubmit ? "submit" : "button"}
-      onClick={clickButton}
-      disabled={isDisabled}
-      title={title}
-    >
-      {content}
-    </button>
-  );
 };
 
 export default LibButton;

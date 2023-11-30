@@ -4,6 +4,7 @@ const colors = require("tailwindcss/colors");
 export const palette = {
   orange: "#F25430",
   teal: "#1C6C7D",
+
   blue: "#1E88E5",
   green: "#4CAF50",
   yellow: "#F9B301",
@@ -28,6 +29,7 @@ export const palette = {
 const config: Config = {
   plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
   content: [
+    "./src/app.config.ts",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/features/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -46,8 +48,24 @@ const config: Config = {
       gray: palette.gray,
       white: palette.white,
 
-      primary: palette.orange,
-      secondary: palette.teal,
+      primary: {
+        DEFAULT: palette.orange,
+        hover: palette.teal,
+        active: palette.teal,
+        disabled: palette.gray[400],
+      },
+      secondary: {
+        DEFAULT: palette.teal,
+        hover: palette.orange,
+        active: palette.orange,
+        disabled: palette.gray[400],
+      },
+      light: {
+        DEFAULT: palette.gray[600],
+        hover: palette.orange,
+        active: palette.orange,
+        disabled: palette.gray[400],
+      },
 
       info: palette.blue,
       success: palette.green,
@@ -63,11 +81,7 @@ const config: Config = {
         DEFAULT: palette.teal,
         hover: palette.orange,
         active: palette.orange,
-      },
-      button: {
-        DEFAULT: palette.orange,
-        hover: palette.teal,
-        active: palette.teal,
+        disabled: palette.gray[400],
       },
       border: {
         DEFAULT: palette.gray[100],
