@@ -1,6 +1,6 @@
-import LibButton, { ButtonSizeEnum } from "@/components/library/Button";
-import LibCard from "@/components/library/Card";
-import LibInput, { InputType } from "@/components/library/Input";
+import LibButton, { ButtonSizeEnum } from "@/library/Button";
+import LibCard from "@/library/Card";
+import LibInput, { InputType } from "@/library/Input";
 import httpService from "@/services/http.service";
 import { useForm, SubmitHandler } from "react-hook-form";
 import IPost from "../post.interface";
@@ -29,7 +29,7 @@ const CreatePostIdea: React.FC = () => {
   };
 
   return (
-    <LibCard heading="New Idea" isCollapsible={true} defaultState="collapsed">
+    <LibCard heading="New Idea" isCollapsible defaultCollapsed>
       <form className="space-y-4" onSubmit={handleSubmit(submit)}>
         <LibInput
           name="title"
@@ -37,7 +37,7 @@ const CreatePostIdea: React.FC = () => {
           control={control}
           rules={{ required: "Title is required" }}
           error={errors.title}
-          autofocus={true}
+          autofocus
         />
 
         <LibInput
@@ -49,7 +49,7 @@ const CreatePostIdea: React.FC = () => {
         />
 
         <div className="flex justify-end">
-          <LibButton isSubmit={true} size={ButtonSizeEnum.Small}>
+          <LibButton isSubmit size={ButtonSizeEnum.Small}>
             Save
           </LibButton>
         </div>

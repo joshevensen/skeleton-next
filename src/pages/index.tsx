@@ -1,4 +1,4 @@
-import Layout from "@/components/layout/Layout";
+import Layout from "@/layout/Layout";
 import PostsTab from "@/features/posts/components/PostsTabs";
 import CreatePostIdea from "@/features/posts/forms/CreatePostIdea";
 import IPost from "@/features/posts/post.interface";

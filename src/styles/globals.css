@@ -5,3 +5,7 @@
 #__next {
   @apply h-full;
 }
+
+#notifications {
+  @apply fixed bottom-4 right-4 space-y-2;
+}

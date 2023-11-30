@@ -1,5 +1,5 @@
 import { Controller, FieldError } from "react-hook-form";
-import LibEditor from "../editor/Editor";
+import LibEditor from "./editor/Editor";
 
 export enum InputType {
   Hidden = "hidden",

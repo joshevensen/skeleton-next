@@ -1,4 +1,4 @@
-import { IOption } from "@/components/library/Input";
+import { IOption } from "@/library/Input";
 
 function formatEnumLabel(label: string) {
   return label.replace(/([A-Z])/g, " $1").trim();

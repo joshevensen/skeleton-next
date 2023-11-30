@@ -1,4 +1,4 @@
-import LibDivider from "../library/Divider";
+import LibDivider from "../Divider";
 import EditorButton from "./Button";
 import { EditorIconsEnum } from "./Icon";
 

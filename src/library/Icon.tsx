@@ -1,27 +1,30 @@
 import {
+  BiCheckDouble,
   BiChevronDown,
   BiChevronLeft,
   BiChevronRight,
   BiChevronUp,
   BiDownArrowAlt,
   BiEditAlt,
+  BiError,
+  BiErrorAlt,
   BiHome,
+  BiInfoCircle,
   BiLeftArrowAlt,
-  BiLogOut,
+  BiLibrary,
   BiPlus,
   BiRightArrowAlt,
   BiSlider,
   BiUpArrowAlt,
   BiX,
-} from "react-icons/bi";
+} from "react-icons/bi"; // https://boxicons.com/
 
 /**
  * Instructions
+ * https://react-icons.github.io/react-icons/
  *
  * 1. Add Icon Name to IconNameEnum
  * 2. Add Icon to Icon Name Switch statement below
- *
- * NOTE: Put icons in alphabetical order to make things easier to find
  */
 
 export enum IconNameEnum {
@@ -31,14 +34,20 @@ export enum IconNameEnum {
   Down,
   Edit,
   Expand,
-  Home,
   Left,
-  Logout,
   Next,
   Prev,
   Right,
-  Settings,
   Up,
+
+  Home,
+  Library,
+  Settings,
+
+  Info,
+  Danger,
+  Warning,
+  Success,
 }
 
 export enum IconSizeEnum {
@@ -92,20 +101,30 @@ const LibIcon: React.FC<props> = ({
       return <BiChevronDown className={classes} />;
     case IconNameEnum.Left:
       return <BiLeftArrowAlt className={classes} />;
-    case IconNameEnum.Home:
-      return <BiHome className={classes} />;
-    case IconNameEnum.Logout:
-      return <BiLogOut className={classes} />;
     case IconNameEnum.Next:
       return <BiChevronRight className={classes} />;
     case IconNameEnum.Prev:
       return <BiChevronLeft className={classes} />;
     case IconNameEnum.Right:
       return <BiRightArrowAlt className={classes} />;
-    case IconNameEnum.Settings:
-      return <BiSlider className={classes} />;
     case IconNameEnum.Up:
       return <BiUpArrowAlt className={classes} />;
+
+    case IconNameEnum.Home:
+      return <BiHome className={classes} />;
+    case IconNameEnum.Library:
+      return <BiLibrary className={classes} />;
+    case IconNameEnum.Settings:
+      return <BiSlider className={classes} />;
+
+    case IconNameEnum.Info:
+      return <BiInfoCircle className={classes} />;
+    case IconNameEnum.Danger:
+      return <BiErrorAlt className={classes} />;
+    case IconNameEnum.Warning:
+      return <BiError className={classes} />;
+    case IconNameEnum.Success:
+      return <BiCheckDouble className={classes} />;
     default:
       return null;
   }

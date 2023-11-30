@@ -31,6 +31,8 @@ const config: Config = {
   content: [
     "./src/app.config.ts",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/library/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/layout/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/features/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -70,7 +72,7 @@ const config: Config = {
       info: palette.blue,
       success: palette.green,
       warning: palette.yellow,
-      danger: palette.red,
+      error: palette.red,
 
       text: {
         muted: palette.gray[400],

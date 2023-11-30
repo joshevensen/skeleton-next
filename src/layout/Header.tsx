@@ -1,6 +1,6 @@
 import { IconNameEnum } from "../library/Icon";
 import NavLink from "./NavLink";
-import appConfig from "../../app.config";
+import appConfig from "../app.config";
 import LayoutLogo from "./Logo";
 
 const LayoutHeader: React.FC = () => {
@@ -21,6 +21,10 @@ const LayoutHeader: React.FC = () => {
             className="hidden md:flex"
           >
             Home
+          </NavLink>
+
+          <NavLink href={"/library"} iconName={IconNameEnum.Library}>
+            Library
           </NavLink>
 
           <NavLink href={"/settings"} iconName={IconNameEnum.Settings}>

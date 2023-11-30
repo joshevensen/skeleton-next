@@ -1,7 +1,7 @@
 import services from "@/services";
 import IPost from "../post.interface";
 import { PostStatus } from "@prisma/client";
-import LibTabs, { ITabItem } from "@/components/library/Tabs";
+import LibTabs, { ITabItem } from "@/library/Tabs";
 import PostsList from "./PostsList";
 
 type props = {
