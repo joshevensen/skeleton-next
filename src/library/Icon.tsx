@@ -12,6 +12,7 @@ import {
   BiInfoCircle,
   BiLeftArrowAlt,
   BiLibrary,
+  BiMenu,
   BiPlus,
   BiRightArrowAlt,
   BiSlider,
@@ -35,6 +36,7 @@ export enum IconNameEnum {
   Edit,
   Expand,
   Left,
+  Menu,
   Next,
   Prev,
   Right,
@@ -101,6 +103,8 @@ const LibIcon: React.FC<props> = ({
       return <BiChevronDown className={classes} />;
     case IconNameEnum.Left:
       return <BiLeftArrowAlt className={classes} />;
+    case IconNameEnum.Menu:
+      return <BiMenu className={classes} />;
     case IconNameEnum.Next:
       return <BiChevronRight className={classes} />;
     case IconNameEnum.Prev:

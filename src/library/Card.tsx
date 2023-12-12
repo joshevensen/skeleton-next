@@ -2,7 +2,7 @@ import { ReactElement, ReactNode, useState } from "react";
 import LibIcon, { IconNameEnum, IconSizeEnum } from "./Icon";
 
 type props = {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
   heading?: string;
   noPadding?: boolean;
