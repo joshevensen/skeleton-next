@@ -1,5 +1,5 @@
 import enums from "@/enums";
-import IPost from "@/features/posts/post.interface";
+import Post from "@/interfaces/post";
 import services from "@/services";
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -12,7 +12,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  let payload: IPost = req.body;
+  let payload: Post = req.body;
   let query = req.query;
 
   switch (req.method) {
@@ -20,21 +20,21 @@ export default async function handler(
       const data = await services.db.post.findUnique({
         where: { id: Number(query.id) },
       });
-      res.status(enums.httpStatusCodes.OK).json({ message: "Success", data });
+      res.status(enums.HttpStatusCodes.OK).json({ message: "Success", data });
       break;
     case "PUT":
       res
-        .status(enums.httpStatusCodes.NotImplemented)
+        .status(enums.HttpStatusCodes.NotImplemented)
         .json({ message: "Not Setup" });
       break;
     case "DELETE":
       res
-        .status(enums.httpStatusCodes.NotImplemented)
+        .status(enums.HttpStatusCodes.NotImplemented)
         .json({ message: "Not Setup" });
       break;
     default:
       res
-        .status(enums.httpStatusCodes.MethodNotAllowed)
+        .status(enums.HttpStatusCodes.MethodNotAllowed)
         .json({ message: "Method Not Allowed" });
   }
 }

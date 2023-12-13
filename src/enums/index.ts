@@ -1,7 +1,7 @@
-import { HttpStatusCodesEnum } from "./httpStatusCodes.enum";
-import { TimezonesEnum } from "./timezones.enum";
+import { HttpStatusCodes } from "./httpStatusCodes";
+import { Timezones } from "./timezones";
 
 export default {
-  httpStatusCodes: HttpStatusCodesEnum,
-  timezones: TimezonesEnum,
+  HttpStatusCodes,
+  Timezones,
 };

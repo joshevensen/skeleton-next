@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import LibIcon, { IconNameEnum, IconSizeEnum } from "../library/Icon";
+import LibIcon, {
+  IconNameEnum,
+  IconSizeEnum,
+} from "../library/components/Icon";
 
 type props = {
   children: any;

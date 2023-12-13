@@ -3,10 +3,12 @@ import LibButton, {
   ButtonColorEnum,
   ButtonSizeEnum,
   ButtonTypeEnum,
-} from "@/library/Button";
-import LibCard from "@/library/Card";
-import { IconNameEnum } from "@/library/Icon";
-import LibNotification, { NotificationTypeEnum } from "@/library/Notification";
+} from "@/library/components/Button";
+import LibCard from "@/library/components/Card";
+import { IconNameEnum } from "@/library/components/Icon";
+import LibNotification, {
+  NotificationTypeEnum,
+} from "@/library/components/Notification";
 import { useState } from "react";
 
 export default function LibraryPage() {

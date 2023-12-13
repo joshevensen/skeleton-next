@@ -1,4 +1,4 @@
-import { IconNameEnum } from "../library/Icon";
+import { IconNameEnum } from "../library/components/Icon";
 import NavLink from "./NavLink";
 import appConfig from "../app.config";
 import LayoutLogo from "./Logo";

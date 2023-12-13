@@ -31,9 +31,10 @@ const config: Config = {
   content: [
     "./src/app.config.ts",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/library/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/forms/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/hooks/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/layout/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/features/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/library/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
