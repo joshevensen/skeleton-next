@@ -1,15 +1,15 @@
-import services from "@/services";
-import Post from "../interfaces/post";
+import Post from "../types/post";
 import { PostStatus } from "@prisma/client";
 import LibTabs, { ITabItem } from "@/library/components/Tabs";
 import PostsList from "./PostsList";
+import utils from "@/library/utils";
 
 type props = {
   posts: Post[];
 };
 
 const PostsTab: React.FC<props> = ({ posts }) => {
-  const statuses = services.utils.getEnumArray(PostStatus);
+  const statuses = utils.convertTo.enumArray(PostStatus);
   const statusTabs: ITabItem[] = [];
 
   statuses.forEach((status) => {

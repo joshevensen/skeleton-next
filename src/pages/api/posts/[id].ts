@@ -1,6 +1,6 @@
 import enums from "@/enums";
-import Post from "@/interfaces/post";
-import services from "@/services";
+import utils from "@/library/utils";
+import Post from "@/types/post";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
@@ -17,7 +17,7 @@ export default async function handler(
 
   switch (req.method) {
     case "GET":
-      const data = await services.db.post.findUnique({
+      const data = await utils.db.post.findUnique({
         where: { id: Number(query.id) },
       });
       res.status(enums.HttpStatusCodes.OK).json({ message: "Success", data });

@@ -1,18 +1,15 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import LibIcon, {
-  IconNameEnum,
-  IconSizeEnum,
-} from "../library/components/Icon";
+import LibIcon from "../library/components/Icon";
 
 type props = {
   children: any;
   href: string;
-  iconName: IconNameEnum;
+  iconPath: string;
   className?: string;
 };
 
-const NavLink: React.FC<props> = ({ children, className, iconName, href }) => {
+const NavLink: React.FC<props> = ({ children, className, iconPath, href }) => {
   const router = useRouter();
   const isActive = router.asPath === href;
 
@@ -23,7 +20,7 @@ const NavLink: React.FC<props> = ({ children, className, iconName, href }) => {
       } flex flex-col items-center font-bold uppercase ${className}`}
       href={href}
     >
-      <LibIcon name={iconName} size={IconSizeEnum.Medium} />
+      <LibIcon path={iconPath} />
       <p className="text-[10px]">{children}</p>
     </Link>
   );

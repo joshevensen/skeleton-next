@@ -1,7 +1,8 @@
 import { createPortal } from "react-dom";
 import LibIcon from "./Icon";
 import { useEffect, useState } from "react";
-import { IconNames, IconSizes } from "../enums";
+import { IconSizes } from "../enums";
+import libConfig from "../lib.config";
 
 export enum NotificationTypeEnum {
   Info = 1,
@@ -43,27 +44,27 @@ const LibNotification: React.FC<props> = ({
         clearTimeout(timeoutId);
       };
     }
-  }, [autoClose, show]);
+  }, [autoClose, show, timeToClose]);
 
   function closeNotification() {
     setShow(false);
   }
 
   let colorClasses = "bg-info";
-  let iconName = IconNames.Info;
+  let iconName = libConfig.icons.Info;
 
   switch (type) {
     case NotificationTypeEnum.Error:
       colorClasses = "bg-error";
-      iconName = IconNames.Danger;
+      iconName = libConfig.icons.Danger;
       break;
     case NotificationTypeEnum.Warning:
       colorClasses = "bg-warning";
-      iconName = IconNames.Warning;
+      iconName = libConfig.icons.Warning;
       break;
     case NotificationTypeEnum.Success:
       colorClasses = "bg-success";
-      iconName = IconNames.Success;
+      iconName = libConfig.icons.Success;
       break;
   }
 
@@ -73,14 +74,14 @@ const LibNotification: React.FC<props> = ({
     >
       <div className="flex items-center space-x-2 pr-5">
         <div className="shrink-0">
-          <LibIcon name={iconName} size={IconSizes.Large} />
+          <LibIcon path={iconName} size={IconSizes.Large} />
         </div>
         <p className="text-lg">{message}</p>
       </div>
 
       {showClose && (
         <button onClick={closeNotification} className="shrink-0 -mr-1">
-          <LibIcon name={IconNames.Close} size={IconSizes.Large} />
+          <LibIcon path={libConfig.icons.Close} size={IconSizes.Large} />
         </button>
       )}
     </div>

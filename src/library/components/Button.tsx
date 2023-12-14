@@ -1,13 +1,7 @@
 import { ReactNode } from "react";
 import { useRouter } from "next/router";
 import LibIcon from "./Icon";
-import {
-  ButtonTypes,
-  ButtonColors,
-  ButtonSizes,
-  IconNames,
-  IconSizes,
-} from "../enums";
+import { ButtonTypes, ButtonColors, ButtonSizes, IconSizes } from "../enums";
 
 type props = {
   onClick?: () => void;
@@ -17,7 +11,7 @@ type props = {
   size?: ButtonSizes;
 
   children?: ReactNode;
-  iconName?: IconNames;
+  iconPath?: string;
 
   isSubmit?: boolean;
   href?: string;
@@ -36,7 +30,7 @@ const LibButton: React.FC<props> = ({
   color = ButtonColors.Primary,
   size = ButtonSizes.Medium,
 
-  iconName,
+  iconPath,
 
   isSubmit = false,
   href,
@@ -79,7 +73,7 @@ const LibButton: React.FC<props> = ({
      * Icon Button
      */
     case ButtonTypes.Icon:
-      if (iconName) {
+      if (iconPath) {
         let iconClasses = "bg-transparent border-transparent";
 
         switch (color) {
@@ -109,7 +103,7 @@ const LibButton: React.FC<props> = ({
             title={title}
           >
             {isLoading && loadingContent}
-            {!isLoading && <LibIcon name={iconName} size={iconSize} />}
+            {!isLoading && <LibIcon path={iconPath} size={iconSize} />}
           </button>
         );
       }

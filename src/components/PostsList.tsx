@@ -1,4 +1,4 @@
-import Post from "../interfaces/post";
+import Post from "../types/post";
 
 type props = {
   posts: Post[];

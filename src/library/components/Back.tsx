@@ -1,4 +1,5 @@
-import { IconNames, IconSizes } from "../enums";
+import { IconSizes } from "../enums";
+import libConfig from "../lib.config";
 import LibIcon from "./Icon";
 import LibLink from "./Link";
 
@@ -10,7 +11,7 @@ const LibBack: React.FC<props> = ({ href }) => {
   return (
     <LibLink href={href}>
       <div className="flex items-center font-bold">
-        <LibIcon name={IconNames.Back} size={IconSizes.Small} /> back
+        <LibIcon path={libConfig.icons.Back} size={IconSizes.Small} /> back
       </div>
     </LibLink>
   );

@@ -1,3 +1,4 @@
+import { PrismaClient } from "@prisma/client";
 import { InputOption } from "../types";
 import date from "./date";
 import http from "./http";
@@ -61,8 +62,9 @@ async function fetcher([url]: [string]) {
   return http.get(`${url}`);
 }
 
-export default {
+const utils = {
   date,
+  db: new PrismaClient(),
   format: {
     enumLabel: formatEnumLabel,
   },
@@ -76,3 +78,5 @@ export default {
   http,
   response,
 };
+
+export default utils;

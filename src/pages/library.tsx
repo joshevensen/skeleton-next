@@ -1,14 +1,11 @@
 import Layout from "@/layout/Layout";
-import LibButton, {
-  ButtonColorEnum,
-  ButtonSizeEnum,
-  ButtonTypeEnum,
-} from "@/library/components/Button";
+import LibButton from "@/library/components/Button";
 import LibCard from "@/library/components/Card";
-import { IconNameEnum } from "@/library/components/Icon";
 import LibNotification, {
   NotificationTypeEnum,
 } from "@/library/components/Notification";
+import { ButtonColors, ButtonSizes, ButtonTypes } from "@/library/enums";
+import libConfig from "@/library/lib.config";
 import { useState } from "react";
 
 export default function LibraryPage() {
@@ -36,29 +33,27 @@ export default function LibraryPage() {
               </div>
               <div className={wrapperClasses}>
                 <LibButton>Primary</LibButton>
-                <LibButton color={ButtonColorEnum.Secondary}>
-                  Secondary
-                </LibButton>
-                <LibButton color={ButtonColorEnum.Light}>Light</LibButton>
+                <LibButton color={ButtonColors.Secondary}>Secondary</LibButton>
+                <LibButton color={ButtonColors.Light}>Light</LibButton>
                 <LibButton isLoading>Loading</LibButton>
-                <LibButton size={ButtonSizeEnum.Small}>Small</LibButton>
-                <LibButton size={ButtonSizeEnum.Large}>Large</LibButton>
+                <LibButton size={ButtonSizes.Small}>Small</LibButton>
+                <LibButton size={ButtonSizes.Large}>Large</LibButton>
               </div>
               <div className={wrapperClasses}>
                 <LibButton isDisabled>Primary</LibButton>
-                <LibButton color={ButtonColorEnum.Secondary} isDisabled>
+                <LibButton color={ButtonColors.Secondary} isDisabled>
                   Secondary
                 </LibButton>
-                <LibButton color={ButtonColorEnum.Light} isDisabled>
+                <LibButton color={ButtonColors.Light} isDisabled>
                   Light
                 </LibButton>
                 <LibButton isLoading isDisabled>
                   Loading
                 </LibButton>
-                <LibButton size={ButtonSizeEnum.Small} isDisabled>
+                <LibButton size={ButtonSizes.Small} isDisabled>
                   Small
                 </LibButton>
-                <LibButton size={ButtonSizeEnum.Large} isDisabled>
+                <LibButton size={ButtonSizes.Large} isDisabled>
                   Large
                 </LibButton>
               </div>
@@ -71,71 +66,65 @@ export default function LibraryPage() {
               <h2 className={headingClasses}>Outline</h2>
 
               <div className={wrapperClasses}>
-                <LibButton type={ButtonTypeEnum.Outline} isFullWidth>
+                <LibButton type={ButtonTypes.Outline} isFullWidth>
                   Full Width
                 </LibButton>
               </div>
               <div className={wrapperClasses}>
-                <LibButton type={ButtonTypeEnum.Outline}>Primary</LibButton>
+                <LibButton type={ButtonTypes.Outline}>Primary</LibButton>
                 <LibButton
-                  type={ButtonTypeEnum.Outline}
-                  color={ButtonColorEnum.Secondary}
+                  type={ButtonTypes.Outline}
+                  color={ButtonColors.Secondary}
                 >
                   Secondary
                 </LibButton>
                 <LibButton
-                  type={ButtonTypeEnum.Outline}
-                  color={ButtonColorEnum.Light}
+                  type={ButtonTypes.Outline}
+                  color={ButtonColors.Light}
                 >
                   Light
                 </LibButton>
-                <LibButton type={ButtonTypeEnum.Outline} isLoading>
+                <LibButton type={ButtonTypes.Outline} isLoading>
                   Loading
                 </LibButton>
-                <LibButton
-                  type={ButtonTypeEnum.Outline}
-                  size={ButtonSizeEnum.Small}
-                >
+                <LibButton type={ButtonTypes.Outline} size={ButtonSizes.Small}>
                   Small
                 </LibButton>
-                <LibButton
-                  type={ButtonTypeEnum.Outline}
-                  size={ButtonSizeEnum.Large}
-                >
+                <LibButton type={ButtonTypes.Outline} size={ButtonSizes.Large}>
                   Large
                 </LibButton>
               </div>
               <div className={wrapperClasses}>
-                <LibButton type={ButtonTypeEnum.Outline} isDisabled>
+                <LibButton type={ButtonTypes.Outline} isDisabled>
                   Primary
                 </LibButton>
                 <LibButton
-                  type={ButtonTypeEnum.Outline}
-                  color={ButtonColorEnum.Secondary}
+                  type={ButtonTypes.Outline}
+                  color={ButtonColors.Secondary}
                   isDisabled
                 >
                   Secondary
                 </LibButton>
                 <LibButton
-                  type={ButtonTypeEnum.Outline}
-                  color={ButtonColorEnum.Light}
+                  type={ButtonTypes.Outline}
+                  color={ButtonColors.Light}
                   isDisabled
                 >
                   Light
                 </LibButton>
-                <LibButton type={ButtonTypeEnum.Outline} isLoading isDisabled>
+                <LibButton type={ButtonTypes.Outline} isLoading isDisabled>
                   Loading
                 </LibButton>
                 <LibButton
-                  type={ButtonTypeEnum.Outline}
-                  size={ButtonSizeEnum.Small}
+                  type={ButtonTypes.Outline}
+                  size={ButtonSizes.Small}
                   isDisabled
                 >
                   Small
                 </LibButton>
                 <LibButton
-                  type={ButtonTypeEnum.Outline}
-                  size={ButtonSizeEnum.Large}
+                  type={ButtonTypes.Outline}
+                  size={ButtonSizes.Large}
                   isDisabled
                 >
                   Large
@@ -149,66 +138,57 @@ export default function LibraryPage() {
             <div>
               <h2 className={headingClasses}>Text</h2>
               <div className={wrapperClasses}>
-                <LibButton type={ButtonTypeEnum.Text}>Primary</LibButton>
+                <LibButton type={ButtonTypes.Text}>Primary</LibButton>
                 <LibButton
-                  type={ButtonTypeEnum.Text}
-                  color={ButtonColorEnum.Secondary}
+                  type={ButtonTypes.Text}
+                  color={ButtonColors.Secondary}
                 >
                   Secondary
                 </LibButton>
-                <LibButton
-                  type={ButtonTypeEnum.Text}
-                  color={ButtonColorEnum.Light}
-                >
+                <LibButton type={ButtonTypes.Text} color={ButtonColors.Light}>
                   Light
                 </LibButton>
-                <LibButton type={ButtonTypeEnum.Text} isLoading>
+                <LibButton type={ButtonTypes.Text} isLoading>
                   Loading
                 </LibButton>
-                <LibButton
-                  type={ButtonTypeEnum.Text}
-                  size={ButtonSizeEnum.Small}
-                >
+                <LibButton type={ButtonTypes.Text} size={ButtonSizes.Small}>
                   Small
                 </LibButton>
-                <LibButton
-                  type={ButtonTypeEnum.Text}
-                  size={ButtonSizeEnum.Large}
-                >
+                <LibButton type={ButtonTypes.Text} size={ButtonSizes.Large}>
                   Large
                 </LibButton>
               </div>
               <div className={wrapperClasses}>
-                <LibButton type={ButtonTypeEnum.Text} isDisabled>
+                <LibButton type={ButtonTypes.Text} isDisabled>
                   Primary
                 </LibButton>
                 <LibButton
-                  type={ButtonTypeEnum.Text}
-                  color={ButtonColorEnum.Secondary}
+                  type={ButtonTypes.Text}
+                  color={ButtonColors.Secondary}
                   isDisabled
                 >
                   Secondary
                 </LibButton>
                 <LibButton
-                  type={ButtonTypeEnum.Text}
-                  color={ButtonColorEnum.Light}
+                  type={ButtonTypes.Text}
+                  color={ButtonColors.Light}
                   isDisabled
                 >
                   Light
                 </LibButton>
-                <LibButton type={ButtonTypeEnum.Text} isLoading isDisabled>
+                <LibButton type={ButtonTypes.Text} isLoading isDisabled>
                   Loading
                 </LibButton>
                 <LibButton
-                  type={ButtonTypeEnum.Text}
-                  size={ButtonSizeEnum.Small}
+                  type={ButtonTypes.Text}
+                  size={ButtonSizes.Small}
                   isDisabled
                 >
                   Small
                 </LibButton>
                 <LibButton
-                  type={ButtonTypeEnum.Text}
-                  size={ButtonSizeEnum.Large}
+                  type={ButtonTypes.Text}
+                  size={ButtonSizes.Large}
                   isDisabled
                 >
                   Large
@@ -224,69 +204,69 @@ export default function LibraryPage() {
 
               <div className={wrapperClasses}>
                 <LibButton
-                  type={ButtonTypeEnum.Icon}
-                  iconName={IconNameEnum.Home}
+                  type={ButtonTypes.Icon}
+                  iconPath={libConfig.icons.Home}
                 />
                 <LibButton
-                  type={ButtonTypeEnum.Icon}
-                  color={ButtonColorEnum.Secondary}
-                  iconName={IconNameEnum.Home}
+                  type={ButtonTypes.Icon}
+                  color={ButtonColors.Secondary}
+                  iconPath={libConfig.icons.Home}
                 />
                 <LibButton
-                  type={ButtonTypeEnum.Icon}
-                  color={ButtonColorEnum.Light}
-                  iconName={IconNameEnum.Home}
+                  type={ButtonTypes.Icon}
+                  color={ButtonColors.Light}
+                  iconPath={libConfig.icons.Home}
                 />
                 <LibButton
-                  type={ButtonTypeEnum.Icon}
-                  iconName={IconNameEnum.Home}
+                  type={ButtonTypes.Icon}
+                  iconPath={libConfig.icons.Home}
                   isLoading
                 />
                 <LibButton
-                  type={ButtonTypeEnum.Icon}
-                  iconName={IconNameEnum.Home}
-                  size={ButtonSizeEnum.Small}
+                  type={ButtonTypes.Icon}
+                  iconPath={libConfig.icons.Home}
+                  size={ButtonSizes.Small}
                 />
                 <LibButton
-                  type={ButtonTypeEnum.Icon}
-                  iconName={IconNameEnum.Home}
-                  size={ButtonSizeEnum.Large}
+                  type={ButtonTypes.Icon}
+                  iconPath={libConfig.icons.Home}
+                  size={ButtonSizes.Large}
                 />
               </div>
               <div className={wrapperClasses}>
                 <LibButton
-                  type={ButtonTypeEnum.Icon}
-                  iconName={IconNameEnum.Home}
+                  type={ButtonTypes.Icon}
+                  iconPath={libConfig.icons.Home}
                   isDisabled
                 />
                 <LibButton
-                  type={ButtonTypeEnum.Icon}
-                  color={ButtonColorEnum.Secondary}
-                  iconName={IconNameEnum.Home}
+                  type={ButtonTypes.Icon}
+                  color={ButtonColors.Secondary}
+                  iconPath={libConfig.icons.Home}
                   isDisabled
                 />
                 <LibButton
-                  type={ButtonTypeEnum.Icon}
-                  color={ButtonColorEnum.Light}
-                  iconName={IconNameEnum.Home}
+                  type={ButtonTypes.Icon}
+                  color={ButtonColors.Light}
+                  iconPath={libConfig.icons.Home}
                   isDisabled
                 />
                 <LibButton
-                  type={ButtonTypeEnum.Icon}
-                  iconName={IconNameEnum.Home}
+                  type={ButtonTypes.Icon}
+                  iconPath={libConfig.icons.Home}
                   isLoading
                   isDisabled
                 />
                 <LibButton
-                  type={ButtonTypeEnum.Icon}
-                  iconName={IconNameEnum.Home}
-                  size={ButtonSizeEnum.Small}
+                  type={ButtonTypes.Icon}
+                  iconPath={libConfig.icons.Home}
+                  size={ButtonSizes.Small}
                   isDisabled
                 />
                 <LibButton
-                  type={ButtonTypeEnum.Icon}
-                  iconName={IconNameEnum.Home}
-                  size={ButtonSizeEnum.Large}
+                  type={ButtonTypes.Icon}
+                  iconPath={libConfig.icons.Home}
+                  size={ButtonSizes.Large}
                   isDisabled
                 />
               </div>

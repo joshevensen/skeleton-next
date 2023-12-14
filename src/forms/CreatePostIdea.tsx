@@ -1,10 +1,11 @@
-import LibButton, { ButtonSizeEnum } from "@/library/components/Button";
+import LibButton from "@/library/components/Button";
 import LibCard from "@/library/components/Card";
-import LibInput, { InputType } from "@/library/components/Input";
-import httpService from "@/services/http";
+import LibInput from "@/library/components/Input";
 import { useForm, SubmitHandler } from "react-hook-form";
-import Post from "../interfaces/post";
+import Post from "../types/post";
 import { PostStatus } from "@prisma/client";
+import { ButtonSizes, InputTypes } from "@/library/enums";
+import utils from "@/library/utils";
 
 const CreatePostIdea: React.FC = () => {
   type NewPost = Pick<Post, "title" | "status" | "notes">;
@@ -23,7 +24,7 @@ const CreatePostIdea: React.FC = () => {
   } = useForm<NewPost>({ defaultValues: defaultValues });
 
   const submit: SubmitHandler<NewPost> = (data) => {
-    httpService.post("sets", JSON.stringify(data)).then(() => {
+    utils.http.post("sets", JSON.stringify(data)).then(() => {
       reset();
     });
   };
@@ -43,13 +44,13 @@ const CreatePostIdea: React.FC = () => {
         <LibInput
           name="notes"
           label="Notes"
-          type={InputType.Multiline}
+          type={InputTypes.Multiline}
           control={control}
           error={errors.notes}
         />
 
         <div className="flex justify-end">
-          <LibButton isSubmit size={ButtonSizeEnum.Small}>
+          <LibButton isSubmit size={ButtonSizes.Small}>
             Save
           </LibButton>
         </div>

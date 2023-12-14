@@ -39,7 +39,7 @@ function updated(response: NextApiResponse, data: any) {
   return response.status(HttpStatusCodes.OK).json({ message: "Updated", data });
 }
 
-export default {
+const response = {
   created,
   destroyed,
   error,
@@ -48,3 +48,5 @@ export default {
   success,
   updated,
 };
+
+export default response;

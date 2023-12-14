@@ -1,7 +1,9 @@
 import { HttpStatusCodes } from "./httpStatusCodes";
 import { Timezones } from "./timezones";
 
-export default {
+const enums = {
   HttpStatusCodes,
   Timezones,
 };
+
+export default enums;

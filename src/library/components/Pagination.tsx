@@ -1,4 +1,5 @@
-import { ButtonColors, ButtonSizes, ButtonTypes, IconNames } from "../enums";
+import { ButtonColors, ButtonSizes, ButtonTypes } from "../enums";
+import libConfig from "../lib.config";
 import LibButton from "./Button";
 
 type props = {
@@ -13,7 +14,7 @@ const LibPagination: React.FC<props> = ({ className }) => {
       <div className="flex justify-center items-center">
         <LibButton
           type={ButtonTypes.Icon}
-          iconName={IconNames.Prev}
+          iconPath={libConfig.icons.Prev}
           size={ButtonSizes.Large}
         />
 
@@ -50,7 +51,7 @@ const LibPagination: React.FC<props> = ({ className }) => {
 
         <LibButton
           type={ButtonTypes.Icon}
-          iconName={IconNames.Next}
+          iconPath={libConfig.icons.Next}
           size={ButtonSizes.Large}
         />
       </div>

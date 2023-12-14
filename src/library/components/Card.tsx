@@ -1,6 +1,7 @@
 import { ReactElement, ReactNode, useState } from "react";
 import LibIcon from "./Icon";
-import { IconNames, IconSizes } from "../enums";
+import { IconSizes } from "../enums";
+import libConfig from "../lib.config";
 
 type props = {
   children?: ReactNode;
@@ -23,13 +24,13 @@ const LibCard: React.FC<props> = ({
   const [showContent, setShowContent] = useState(
     defaultCollapsed ? false : true
   );
-  const [iconName, setIconName] = useState(
-    defaultCollapsed ? IconNames.Expand : IconNames.Collapse
+  const [iconPath, setIconPath] = useState(
+    defaultCollapsed ? libConfig.icons.Expand : libConfig.icons.Collapse
   );
 
   function toggleContent() {
     setShowContent((state) => {
-      setIconName(!state ? IconNames.Collapse : IconNames.Expand);
+      setIconPath(!state ? libConfig.icons.Collapse : libConfig.icons.Expand);
       return !state;
     });
   }
@@ -49,7 +50,7 @@ const LibCard: React.FC<props> = ({
         >
           <h3 className={headerClass}>{heading}</h3>
 
-          <LibIcon name={iconName} size={IconSizes.Large} />
+          <LibIcon path={iconPath} size={IconSizes.Large} />
         </header>
       )}
 

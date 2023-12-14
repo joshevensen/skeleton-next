@@ -1,9 +1,9 @@
-import libraryConfig from "../config";
+import libConfig from "../lib.config";
 
 const axios = require("axios").default;
 
 const http = axios.create({
-  baseURL: libraryConfig.httpBaseURL,
+  baseURL: libConfig.httpBaseURL,
 });
 
 http.interceptors.response.use(

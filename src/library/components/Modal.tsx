@@ -1,7 +1,8 @@
 import { createPortal } from "react-dom";
 import { ReactNode } from "react";
 import LibIcon from "./Icon";
-import { IconNames, IconSizes } from "../enums";
+import { IconSizes } from "../enums";
+import libConfig from "../lib.config";
 
 type props = {
   isOpen: boolean;
@@ -44,7 +45,10 @@ const LibModal: React.FC<props> = ({
                   className="p-2 text-gray-500 hover:text-secondary cursor-pointer"
                   onClick={closeModal.bind("close", true)}
                 >
-                  <LibIcon name={IconNames.Close} size={IconSizes.Large} />
+                  <LibIcon
+                    path={libConfig.icons.Close}
+                    size={IconSizes.Large}
+                  />
                 </div>
               </div>
             </div>

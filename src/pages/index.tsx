@@ -1,16 +1,16 @@
 import Layout from "@/layout/Layout";
 import PostsTab from "@/components/PostsTabs";
 import CreatePostIdea from "@/forms/CreatePostIdea";
-import Post from "@/interfaces/post";
-import services from "@/services";
+import Post from "@/types/post";
 import { useEffect, useState } from "react";
+import utils from "@/library/utils";
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
-    services.http.get("posts").then((response: any) => {
+    utils.http.get("posts").then((response: any) => {
       setPosts(response.data);
       setLoading(false);
     });

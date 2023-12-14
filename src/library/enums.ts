@@ -33,31 +33,6 @@ export enum HttpStatusCodes {
   NotImplemented = 501,
 }
 
-export enum IconNames {
-  Add = 1,
-  Back,
-  Close,
-  Collapse,
-  Edit,
-  Expand,
-  Next,
-  Prev,
-  Right,
-  Down,
-  Left,
-  Menu,
-  Up,
-
-  Library,
-  Home,
-  Settings,
-
-  Info,
-  Danger,
-  Warning,
-  Success,
-}
-
 export enum IconSizes {
   Small = 1,
   Medium,
