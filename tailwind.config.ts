@@ -29,7 +29,6 @@ export const palette = {
 const config: Config = {
   plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
   content: [
-    "./src/app.config.ts",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/forms/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/hooks/**/*.{js,ts,jsx,tsx,mdx}",

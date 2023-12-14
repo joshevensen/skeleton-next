@@ -1,5 +1,4 @@
 import Icon from "@mdi/react";
-import { IconSizes } from "../enums";
 
 type props = {
   iconPath: string;
@@ -27,7 +26,7 @@ const EditorButton: React.FC<props> = ({
           : `${defaultClasses} hover:bg-secondary hover:text-white`
       }
     >
-      <Icon path={iconPath} size={IconSizes.Small} />
+      <Icon path={iconPath} size={0.8} />
     </button>
   );
 };
