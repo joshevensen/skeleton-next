@@ -1,14 +1,15 @@
-import EditorIcon, { EditorIconsEnum } from "./Icon";
+import Icon from "@mdi/react";
+import { IconSizes } from "../enums";
 
 type props = {
-  iconName: EditorIconsEnum;
+  iconPath: string;
   onClick: () => void;
   isDisabled?: boolean;
   isActive?: boolean;
 };
 
 const EditorButton: React.FC<props> = ({
-  iconName,
+  iconPath,
   onClick,
   isDisabled = false,
   isActive = false,
@@ -26,7 +27,7 @@ const EditorButton: React.FC<props> = ({
           : `${defaultClasses} hover:bg-secondary hover:text-white`
       }
     >
-      <EditorIcon name={iconName} />
+      <Icon path={iconPath} size={IconSizes.Small} />
     </button>
   );
 };

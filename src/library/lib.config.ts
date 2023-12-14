@@ -17,8 +17,6 @@ import {
   mdiHome,
   mdiInformationOutline,
   mdiMenu,
-  mdiPencil,
-  mdiPencilBox,
   mdiPlus,
   mdiSquareEditOutline,
 } from "@mdi/js";
